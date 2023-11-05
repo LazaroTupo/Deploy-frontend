@@ -1,0 +1,56 @@
+/* .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    width: 400px; 
+    height: 600px;
+  }
+  
+  .imagen {
+    text-align: center; 
+    margin-bottom: 10px;
+  }
+  
+  .foto_paciente {
+    --size: 200px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 60%;
+  }
+  
+  .datos {
+    text-align: left;
+  }
+  
+  .info-text {
+    width: 100%; 
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  table td {
+    padding: 5px;
+  }
+  
+  body {
+    background-color: white;
+  }
+  
+.grafico-container {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 1100px;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px; 
+  padding: 5px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+}
+.estado-activo {
+  color: green;
+}
+ */

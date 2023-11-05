@@ -1,0 +1,27 @@
+.days-carousel {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: var(--blue);
+}
+.semana{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 25px;
+    min-width: 100px;
+}
+.day{
+    background-color: white;
+    border-radius: 8%;
+    cursor: pointer;
+    text-align: center;
+    padding: 1.5rem;
+    line-height: 2rem;
+    font-weight: bold;
+    transition: all ease-in-out .3s;
+}
+
+.day:hover, .day.active{
+    background-color: #4495D1;
+    border-radius: 8%;
+    color: white;
+}

@@ -1,0 +1,168 @@
+.container{
+    height:100%;
+    box-sizing: border-box;
+}
+
+.contenedorFiltro{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 110px;
+}
+
+.contenedorContenido{
+    display:grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    height:100%;
+    padding-bottom: 16px;
+}
+.contenedorTrianguloIzq{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contenedorTrianguloDer{
+    display: flex;
+    align-items: center;
+}
+.trianguloIzq{
+    width: 0;
+    height: 0;
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    border-right: 50px solid #4495d1;
+    cursor:pointer;
+}
+.trianguloIzq:hover{
+    border-right: 50px solid #4ab372;
+}
+.trianguloDer{
+    width: 0;
+    height: 0;
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    border-left: 50px solid #4495d1;
+    cursor:pointer;
+}
+.trianguloDer:hover{
+    border-left: 50px solid #4ab372;
+}
+.contenedorHistorial{
+    margin-right:20px;
+    margin-left:20px;
+    border-radius: 20px;
+    border:2px solid #000000;;
+    padding-top:20px;
+    padding-right:20px;
+    padding-left:20px;
+    background-color:#d8f3ff;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:20px;
+    height:637px;
+
+    
+}
+.columnaIzq{
+    height:100%;
+}
+.columnaDer{
+    height:100%;
+}
+.contenedorCategoria{
+    background-color: white;
+    height:148px;
+    margin-bottom:10px;
+    border-radius: 20px;
+}
+.categoriaTitulo{
+    height:30px;
+    border-radius: 20px;
+    border:2px solid #000000;
+    display:flex;
+}
+.titulo{
+    color:#4495D1;
+    font-size:25px; 
+    font-weight: 600;
+    margin-left: 10px;
+}
+.contenido{
+    margin-top:3px;
+    margin-left: 15px; 
+}
+.icono{
+    margin-left:8px;
+    padding-top:2px;
+    padding-left:2px;
+    padding-right:2px;
+}
+.pacienteContenido{
+    display:flex;
+    
+}
+.imagenPerfil{
+    height:100px;
+    width:100px;
+    object-fit: cover;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.modalFiltros{
+    margin:auto;
+    background-color: #4495d1;
+    height:300px;
+    width:650px;
+    border-radius: 10px;
+    
+    border: solid 2px;
+
+}
+.modalFiltrosContenedor{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+}
+.modalFiltros-cerrar{
+    width: 30px;
+    margin-left: auto;
+    cursor:pointer;
+}
+.modalFiltros-filtros{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap:30px 50px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.modalFiltros-filtros>select{
+    background-color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+    height:25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+    position: relative;
+}
+.modalFiltros-aplicar{
+    width:100px;
+    margin:auto;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+    background-color: #d8f3ff;
+    border-radius: 10px;
+    cursor:pointer;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(../img/icono_filtro.png) no-repeat;
+    background-position: 95% center;
+    background-size: 15px;
+    cursor:pointer;
+}    
+#imgFiltros{
+    cursor:pointer;
+}

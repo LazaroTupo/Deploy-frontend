@@ -1,0 +1,93 @@
+.Calendario__container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Calendario__container-titulo{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    color: #0A6DB4;
+}
+
+.Calendario-tabla{
+    border-collapse: collapse;
+    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 10px;
+    border: #000;
+}
+
+.Calendario-tabla tr{
+    height: 30px;
+}
+
+.columna-1{
+    min-width: 150px;
+    background-color: #D8F3FF;
+}
+
+.columna-2{
+    min-width: 75px;
+}
+
+.columna-3{
+    min-width: 80px;
+}   
+
+.columna-4{
+    min-width: 120px;
+}
+
+.columna-5{
+    min-width: 80px;
+}
+
+.columna-6{
+    min-width: 85px;
+}
+
+.columna-7{
+    min-width: 85px;
+}
+
+.columna-8{
+    min-width: 90px;
+}
+
+tr:nth-of-type(1) > th{
+    background-color: #DEF9DE;
+}
+
+tr:nth-of-type(3) > .columna-2,
+tr:nth-of-type(4) > .columna-2,
+tr:nth-of-type(4) > .columna-4,
+tr:nth-of-type(5) > .columna-4,
+tr:nth-of-type(5) > .columna-7,
+tr:nth-of-type(6) > .columna-7,
+tr:nth-of-type(7) > .columna-5,
+tr:nth-of-type(8) > .columna-5,
+tr:nth-of-type(11) > .columna-5,
+tr:nth-of-type(12) > .columna-5{
+    background-color: #4AB372;
+} 
+
+tr:nth-of-type(3) > .columna-5,
+tr:nth-of-type(4) > .columna-5,
+tr:nth-of-type(6) > .columna-3,
+tr:nth-of-type(6) > .columna-4,
+tr:nth-of-type(7) > .columna-2,
+tr:nth-of-type(7) > .columna-3,
+tr:nth-of-type(7) > .columna-4,
+tr:nth-of-type(7) > .columna-7,
+tr:nth-of-type(8) > .columna-2,
+tr:nth-of-type(8) > .columna-3,
+tr:nth-of-type(8) > .columna-7,
+tr:nth-of-type(9) > .columna-2,
+tr:nth-of-type(10) > .columna-2,
+tr:nth-of-type(11) > .columna-4,
+tr:nth-of-type(12) > .columna-4{
+    background-color: #4495D1;
+}
