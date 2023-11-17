@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 
 import { getPacientes } from "../data/apiPacientes";
 import { postCita } from "../data/apiCitas";
+import { getCitas } from "../data/apiCitas";
+import Card from "../components/Card";
 
 import "../css/modal.css";
 import { getEvaluaciones } from "../data/apiEvaluaciones";
-import { formatDate, getFechaBakcend, hasEvaluation } from "../helpers/helpers";
+import { formatDate, getFechaBakcend, hasEvaluation, getEvaluacionID } from "../helpers/helpers";
+import {validateAppointment} from "../helpers/helpers";
 
 export default function ModalCita({setterClose}) {
     
@@ -14,7 +17,8 @@ export default function ModalCita({setterClose}) {
     const [evaluaciones, setEvaluaciones] = useState([]);
     const [pacientesSearch, setPacientesSearch] = useState([]);
     const [pacienteShow, setPacienteShow] = useState({});
-    const [fecha, setFecha] = useState(new Date());
+    const [fechaHora, setFechaHora] = useState(""); 
+    const [arrayCitas, setArrayCitas] = useState([]);
 
     useEffect(()=>{
         const loader = async () => {
@@ -25,7 +29,7 @@ export default function ModalCita({setterClose}) {
             setPacientesSearch(data.filter((paciente)=>{
                 return (paciente.nombre.includes(search) || paciente.apellido.includes(search) || paciente.dni.includes(search)) && hasEvaluation(paciente, ev);
             }))
-            setPacienteShow(data[0])
+            setPacienteShow(pacientesSearch.length!==0?pacientesSearch[0] : {})  
         }
         loader();
     }, [])
@@ -36,68 +40,95 @@ export default function ModalCita({setterClose}) {
         setPacienteShow(pacientesSearch.length!==0?pacientesSearch[0] : {})   
     }, [search]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getCitas();
+            setArrayCitas(result.data);
+        };
+        fetchData();
+    }, []);
+
+   
     const handleSubmit = () => {
-        const fin = new Date(fecha);
-        fin.setHours(fin.getHours() + 1);
+        const fechaInicio = new Date(fechaHora);
+        const fechaFinal = new Date(fechaHora);
+        fechaFinal.setMinutes(fechaFinal.getMinutes() + 60);
+
         const data = {
-            asistido: false,
-            precio: 100,
+            inicio: getFechaBakcend(fechaInicio),
+            fin: getFechaBakcend(fechaFinal),
             reporte: '',
+            precio: 100,
+            asistido: false,
             terapista: '72682166',
-            inicio: getFechaBakcend(fecha),
-            fin: getFechaBakcend(fin),
-            evaluacion: 1
+            paciente: pacienteShow.dni,
+            evaluacion: getEvaluacionID(pacienteShow, evaluaciones)
         }
-        const api = async () => {
-            await postCita(data);
+
+        const registro = async () => {
+            console.log(data)
+            const hayCita = validateAppointment(arrayCitas, fechaInicio);
+
+            if (hayCita) {
+                await postCita(data);
+            }   
         }
-        api();
-        setterClose(false);
+            registro();
+            setterClose(false);
     }
-    
+     
     return (
         <div className="modal-overlay">
             <button className="btn-close"
             onClick={() => setterClose(false)}>X</button>
-            <div className="modal text-white">
-                <h2>Formulario de Datos</h2>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input type="text" value={search} onChange={(e) => {                            
-                            setSearch(e.target.value);                            
-                        }} placeholder="Nombre o DNI del paciente" />
-                        <div className="overflow-scroll">                            
+            <form action="" className="modal flex flex-col text-white" onSubmit={handleSubmit}>
+                <h2>FORMULARIO DE DATOS</h2>
+                <div className="flex-1 flex gap-2">
+                    <div className="flex-1 flex flex-col h-full">
+                        <input
+                            type="text"
+                            value={search}
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                            }}
+                            placeholder="Nombre o DNI del paciente"
+                        />
+                        <div className="flex-1 overflow-scroll">
+                            <div className="container-radios">
                             {pacientesSearch.map((paciente)=>{
-                                return <div key={paciente.dni}>
-                                    <label htmlFor={`paciente${paciente.dni}`}>{paciente.apellido}</label>
-                                    <input type="radio" name="pacientes" id={`paciente${paciente.dni}`} value={paciente.apellido} onClick={()=>setPacienteShow(paciente)} />
+                                return <div className="radio-modal" key={paciente.dni}>
+                                    <input type="radio" name="pacientes" id={`paciente${paciente.dni}`} value={paciente.apellido} onClick={()=>setPacienteShow(paciente)} checked={pacienteShow.dni === paciente.dni}/>
+                                    <label className="label-name" htmlFor={`paciente${paciente.dni}`}> {paciente.dni} - {paciente.apellido}, {paciente.nombre}</label>
                                 </div>
                             })}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        {Object.keys(pacienteShow).length !== 0 && 
-                        <div>
-                            <p>
-                                {pacienteShow.dni}
-                            </p>
-                            <input type="date" name="" id="" value={fecha.toISOString().split('T')[0]} onChange={(e)=>setFecha(new Date(e.target.value))} />
-                            <input type="time" name="" id="" value={fecha.toLocaleTimeString('en-US', { hour12: false })} onChange={(e) => {
-                                const x = new Date();
-                                const partesTiempo = e.target.value.split(":");
-                                const horas = parseInt(partesTiempo[0], 10);
-                                const minutos = parseInt(partesTiempo[1], 10);
-                                const seg = parseInt(partesTiempo[2], 10);
-                                x.setHours(horas);
-                                x.setMinutes(minutos);
-                                x.setSeconds(seg);
-                                setFecha(x);
-                            }}/>
-                        </div>}
+                    <div className="flex-1 h-fulL">                         
+                            <div>                                                                
+                                <input type="datetime-local" name="" id="" value={fechaHora} onChange={(e) => {
+                                    const newDateTime = e.target.value;
+                                    setFechaHora(newDateTime);
+                                }}/>
+                                <div className="w-full center my-1">
+                                {Object.keys(pacienteShow).length !== 0 &&
+                                    <table><tbody>
+                                        <tr>
+                                            <td>DNI:</td><td> {pacienteShow.dni}</td>
+                                        </tr>
+                                        <tr><td>Nombre:</td><td>{pacienteShow.nombre}</td></tr>
+                                        <tr><td>Apellido:</td><td>{pacienteShow.apellido}</td></tr>
+                                        <tr><td>Gener:</td><td>{pacienteShow.genero}</td></tr>
+                                        <tr><td>Ocupacion:</td><td>{pacienteShow.ocupacion}</td></tr>
+                                        
+                                    </tbody></table>
+                                }
+                                </div>
+                            </div>                        
                     </div>
-                    <button className="btn btn-green" type="submit">Guardar</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" className="btn btn-green">Guardar</button>
+            </form>
         </div>
     )
 }

@@ -1,6 +1,19 @@
+import { useState, useEffect } from "react";
+
 import "../css/stylecalendario.css";
 
 export default function Calendario(){
+    const [citas, setCitas] = useState([]);
+
+    useEffect(()=>{
+        const loader = async () => {
+            const data = (await getCitas()).data;
+            setCitas(data);
+        }
+        loader();
+        
+    }, [])
+
     return(
         <div className="Calendario__container">
             <h1 className="Calendario__container-titulo">Cronograma de Horarios</h1>

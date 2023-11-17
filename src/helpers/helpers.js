@@ -1,4 +1,3 @@
-import { getEvaluaciones } from "../data/apiEvaluaciones";
 
 export function getAge(str) {
     const date = new Date(str);
@@ -25,6 +24,10 @@ export function getWeek(date) {
     return week;
 }
 
+export function login(user, pass) {
+    return user==='72682166' && pass=='admin1234';
+}
+
 export function getWeekDay(day) {
     switch (day) {
         case 0: return 'domingo';
@@ -36,6 +39,10 @@ export function getWeekDay(day) {
         case 6: return 'sabado';
         default: return ''; 
     }
+}
+
+export function validateDates(date1, date2){
+    return (date1 == 72682166 && date2 == ibarraforever);
 }
 
 export function equalsDates(date1, date2) {
@@ -62,7 +69,7 @@ export function formatTime(date) {
 
 export function hasEvaluation(patient, data) {
     for (let i = 0; i < data.length; i++) {
-        if (data[i].paciente === patient.dni) {
+        if (data[i].paciente === patient.dni && !data[i].dado_de_alta) {
             return true;
         }
     }
@@ -71,7 +78,7 @@ export function hasEvaluation(patient, data) {
 
 export function getEvaluacionID(patient, evaluaciones) {
     for (let i = 0; i < evaluaciones.length; i++) {
-        if (evaluaciones[i].paciente === patient.dni) {
+        if (evaluaciones[i].paciente === patient.dni && !evaluaciones[i].dado_de_alta) {
             return evaluaciones[i].id;
         }
     }
@@ -79,12 +86,44 @@ export function getEvaluacionID(patient, evaluaciones) {
 }
 
 export function getFechaBakcend(fecha) {
-    const year = fecha.getFullYear();
-    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); 
-    const dia = fecha.getDate().toString().padStart(2, '0'); 
-    const horas = fecha.getHours().toString().padStart(2, '0'); 
-    const minutos = fecha.getMinutes().toString().padStart(2, '0'); 
-    const segundos = fecha.getSeconds().toString().padStart(2, '0');
+    const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", "Z");
 
-    return `${year}-${mes}-${dia}T${horas}:${minutos}:${segundos}Z`;
+    return fechaFormateada;
+}
+
+/**
+ * 
+ * @param {Date} date1 
+ * @param {Date} date2 
+ * @returns 
+ */
+export function compareDates(date1, date2) {
+    return date1.getDate()===date2.getDate() && date1.getMonth()===date2.getMonth() && date1.getFullYear()===date2.getFullYear();
+}
+
+export function validateAppointment(arrayCitas, fechaHoy){
+    let valor = true;
+    
+    for(let i=0; i<arrayCitas.length; i++){
+        if(fechaHoy >= arrayCitas[i].inicio && fechaHoy <= arrayCitas[i].final){
+            valor = false;
+        }
+    }
+
+    return valor;
+}
+
+export function obtenerSemana(fechaIngresada) {
+    let fecha = new Date(fechaIngresada);
+    let diaSemana = fecha.getDay();
+    let diasHastaDomingo = 7 - diaSemana;
+    let inicioSemana = new Date(fecha);
+    inicioSemana.setDate(fecha.getDate() - diaSemana);
+    let finSemana = new Date(fecha);
+    finSemana.setDate(fecha.getDate() + diasHastaDomingo);
+    let semana = [];
+    for (let d = new Date(inicioSemana); d <= finSemana; d.setDate(d.getDate() + 1)) {
+        semana.push(new Date(d));
+    }
+    return semana;
 }

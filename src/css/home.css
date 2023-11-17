@@ -1,17 +1,16 @@
 .fecha{
     color: gray;
     font-style:italic;
-    margin: .5rem 0;
 }
 .cita{ 
     border-radius: 2rem;
     line-height: 1.5rem;
-    margin: .5rem 0;
+    width: 100%;
 }
 .cita-data {
-    display: flex;
-    flex-direction: column;    
-    padding: 1rem;
+    display: flex; 
+    justify-content: space-between;
+    width: 100%;
 }
 .cita .hora {
     color: #989898;
@@ -31,13 +30,21 @@
     font-family: 'IBM Plex Sans', sans-serif;
     align-self: flex-end;
 }
-.cita-blue{
-    background-color: var(--soft-blue);
-    border-left: 28px solid var(--blue);
+.cita-blue {background-color: var(--soft-blue);}
+.cita-green {background-color: var(--soft-green);}
+.cita-blue .border-cita{
+    background-color: var(--blue);
+    width: 20px;
 }
-.cita-green{
-    background-color: var(--soft-green);;
-    border-left: 28px solid var(--green);
+.cita-green .border-cita{
+    background-color: var(--green);
+    width: 20px;
+}
+.cita-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem;
 }
 .icon-add {
     display: flex;

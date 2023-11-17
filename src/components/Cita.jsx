@@ -11,25 +11,27 @@ export default function Cita({cita}) {
 
     useEffect(()=>{
         const getName = async () => {
-            const paciente = (await getPaciente(cita.paciente)).data;
+            const p = (await getPaciente(cita.paciente));
             const ev = cita.evaluacion!=null ? (await getEvaluacion(cita.evaluacion)).data : {};
-            setPaciente(paciente);
+            setPaciente(p.data);
             setEvaluacion(ev);
+            console.log(cita)
         }
         getName();
     }, [])
 
     return (
-        <div className="cita">
+        <li className="cita">
             <p className="hora">{`${formatTime(new Date(cita.inicio))} - ${formatTime(new Date(cita.fin))}`}</p>
-            <div className={`rounded cita-${!cita.asistido?'blue':'green'}`}>
-                <div className="cita-data">
+            <div className={`rounded cita-${!cita.asistido?'blue':'green'} cita-data`}>
+                <div className="border-cita rounded-left"></div>
+                <div className="cita-body">
                     <p className="consulta-txt">Cita</p>
                     <p className="nombre-paciente">{`${paciente.dni !== undefined ? paciente.nombre + " " + paciente.apellido : ''}`}</p>
-                    <p className="nombre-paciente">{`${evaluacion.id !== undefined ? evaluacion.diagnosticoTerapeutico : ''}`}</p>
+                    <p className="nombre-paciente">{`${evaluacion.id !== undefined ? evaluacion.enfermedad_actual : ''}`}</p>
                     <p className="asistencia">{cita.asistido?'Asistió':'No asistió'}</p>
                 </div>
             </div>
-        </div>
+        </li>
     );
 }

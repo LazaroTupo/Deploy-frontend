@@ -1,13 +1,9 @@
 .days-carousel {
-    margin: 1rem 0;
     padding: 1rem;
     background-color: var(--blue);
-}
-.semana{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 25px;
-    min-width: 100px;
+    column-gap: 1rem;
 }
 .day{
     background-color: white;

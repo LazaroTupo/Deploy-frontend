@@ -1,6 +1,6 @@
 .modal-overlay {
     background: rgba(9, 3, 3, 0.5);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -8,23 +8,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
-
 .modal {
-    background:linear-gradient(
-        180deg,
-        rgba(18, 68, 154, 0.778)0%,
-        rgba(34, 92, 228, 0.711)50%,
-        rgba(18, 68, 154, 0.778)100%);
-      
-    padding: 3rem 7rem;
-    border-radius: 25px;
-    width: 30%;
+    background: linear-gradient(180deg,
+    rgba(18, 68, 154, 0.778)0%,
+    rgba(34, 92, 228, 0.711)50%,
+    rgba(18, 68, 154, 0.778)100%);
+    border-radius: 1rem;
     box-shadow: 0 2px 10px rgba(29, 27, 27, 0.2);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 65%;
+    height: 80%;
+    padding: 1rem;
+    overflow: hidden;
+    color: white;
+}
+/* Contenedor de nombres */
+.container-radios {
+    /* Añade el ancho deseado y establece una altura máxima para que sea desplazable */
+    width: 100%; /* O ajusta el ancho según tus necesidades */
+    max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
 }
 
 .modal h2 {
@@ -34,42 +37,19 @@
     color: #fff;
 }
 
-
-.modal form {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
-    display: grid;
-    grid-template-columns: repeat(2,2fr);
-    flex-direction: column;
-    grid-gap: 30px;
-   
-}
-
 .modal label {
     font-weight: bold;
 }
+
 .modal input {
     border-radius: 8px;
     border: 0;
-    height: 2rem;
-    width: 90%;
     outline: none;
     box-shadow: 5 4px 10px rgba(29, 27, 27, 0.2);
+    padding: .5rem;
 }
-
-.modal button {
+.radio-modal {
+    display: flex;
     align-items: center;
-    margin-top: 20px;
-    background-color: #44ad6d;
-    color: #fff;
-    border: 0;
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-weight:bold ;
-    cursor: pointer;
-}
-
-
-.modal button:hover {
-    background-color: #4AB372;
+    justify-content: flex-start;
 }

@@ -1,17 +1,17 @@
 import axios from "axios";
 
 export function getEvaluacionCorporal() {
-    return axios.get('http://127.0.0.1:8000/evaluacionCorporal/');
+    return axios.get('https://web-production-97cf.up.railway.app/evaluacionCorporal/');
 }
 export function getEvaluacionCorporalId(evaluacioncorporal) {
-    return axios.get(`http://127.0.0.1:8000/evaluacionCorporal/${evaluacioncorporal}/`);
+    return axios.get(`https://web-production-97cf.up.railway.app/evaluacionCorporal/${evaluacioncorporal}/`);
 }
 export function updateEvaluacionCorporal(evaluacioncorporal) {
-    return axios.put(`http://127.0.0.1:8000/evaluacionCorporal/${evaluacioncorporal.id}/`, evaluacioncorporal);
+    return axios.put(`https://web-production-97cf.up.railway.app/evaluacionCorporal/${evaluacioncorporal.id}/`, evaluacioncorporal);
 }
 export function postEvaluacionCorporal(evaluacioncorporal) {
-    return axios.put(`http://127.0.0.1:8000/evaluacionCorporal/`, evaluacioncorporal);
+    return axios.post(`https://web-production-97cf.up.railway.app/evaluacionCorporal/`, evaluacioncorporal);
 }
 export function deleteEvaluacionCorporal(evaluacioncorporal) {
-    return axios.put(`http://127.0.0.1:8000/evaluacionCorporal/${evaluacioncorporal.id}/`, evaluacioncorporal);
+    return axios.delete(`https://web-production-97cf.up.railway.app/evaluacionCorporal/${evaluacioncorporal.id}/`);
 }

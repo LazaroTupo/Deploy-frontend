@@ -5,7 +5,8 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    background-color: rgb(225, 239, 255);
+    background-image: url('../img/fondo1.jpg');
+    background-size: cover;
 }
 
 .bg-login { 
@@ -23,6 +24,7 @@
     padding: 2rem;
     width: 30%;
 }
+
 
 .logo {
     width: 200px;

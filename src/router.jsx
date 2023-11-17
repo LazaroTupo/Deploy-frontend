@@ -6,6 +6,7 @@ import Perfil from "./pages/Perfil";
 import Pacientes from "./pages/Pacientes";
 import Calendario from "./pages/Calendario";
 import Historial from "./pages/Historial";
+import FichaForm from "./pages/FichaForm";
 
 /**
  * this file contains the 'router'
@@ -14,33 +15,37 @@ import Historial from "./pages/Historial";
 export const router = createBrowserRouter([
     {
         element: <Layout/>,
-        path: '/',
+        path: '/sgp',
         children: [
             {
                 index: true,
                 element: <Index/>
             },
             {
-                path: '/profile',
+                path: '/sgp/profile',
                 element: <Perfil/>,
             },
             {
-                path: '/calendar',
+                path: '/sgp/calendar',
                 element: <Calendario/>,
             },
             {
-                path: '/patients',
+                path: '/sgp/patients',
                 element: <Pacientes/>,
             },
             {
-                path: '/historial',
+                path: '/sgp/historial',
                 element: <Historial/>,
             },
-            
+            {
+                path: '/sgp/ficha/:dni',
+                element: <FichaForm/>
+            },
         ],
     },
     {
-        path: 'login/',
+        path: '/',
         element: <Login/>
     },
+    
 ])

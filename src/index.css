@@ -13,25 +13,35 @@
     margin: 0;
     list-style: none;
     text-decoration: none;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-.btn-close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: #ffffff00;
-    margin: 1rem;
-    color: white;
-    border: 0;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
+body, html, #root {
+    height: 100%;
+    width: 100%;
 }
-.rounded {
-    border-radius: 1rem;
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
-.flex{display: flex;}
+.section {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+.page {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
 .p-2 {
     padding: 2rem;
+}
+.p-1 {
+    padding: 1rem;
 }
 .px-2 {
     padding: 0 2rem;
@@ -39,27 +49,28 @@
 .py-2{
     padding: 2rem 0;
 }
-body, html, #root {
-    height: 100%;
+.pb-1{
+    padding-bottom: 1rem;
 }
+.bg-blue{background-color: var(--blue);}
+.bg-sky-blue{background-color: var(--sky-blue);}
+.bg-soft-blue{background-color: var(--soft-blue);}
+.bg-green{background-color: var(--green);}
+.bg-soft-green{background-color: var(--soft-green);}
+
 .h-full {
     height: 100%;
 }
 .w-full{
     width: 100%;
 }
-.flex-1{
-    flex: 1;
+.rounded {
+    border-radius: 1rem;
 }
-.flex-2{
-    flex: 2;
+.rounded-left {
+    border-radius: 1rem 0 0 1rem;
 }
-.col-1\/4 {
-    width: 25%;
-}
-.col-1\/2 {
-    width: 50%;
-}
+
 .overflow-scroll {
     overflow-y: scroll;
 }
@@ -75,13 +86,40 @@ body, html, #root {
     scrollbar-width: thin; 
     scrollbar-color: transparent transparent; 
   }
-  
-.page {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+.btn-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #ffffff00;
+    margin: 1rem;
+    color: white;
+    border: 0;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+.overflow-hidden {
     overflow: hidden;
 }
+.flex{display: flex;}
+.flex-col {
+    flex-direction: column;
+}
+.flex-1{
+    flex: 1;
+}
+.flex-2{
+    flex: 2;
+}
+.col-1\/4 {
+    width: 25%;
+}
+.col-1\/2 {
+    width: 50%;
+}
+
+  
+
 .btn {
     width:100%;
     border-radius: 4rem;
@@ -117,11 +155,7 @@ body, html, #root {
     width: 100%;
     margin: 1rem 0;
 }
-.bg-blue{background-color: var(--blue);}
-.bg-sky-blue{background-color: var(--sky-blue);}
-.bg-soft-blue{background-color: var(--soft-blue);}
-.bg-green{background-color: var(--green);}
-.bg-soft-green{background-color: var(--soft-green);}
+
 .center {
     display: flex;
     justify-content: center;
@@ -140,21 +174,12 @@ body, html, #root {
 .fw-bold{
     font-weight: bold;
 }
-.main {
-    display: flex;  
-    height: 100%;  
-}
-.section {
-    flex: 1;
-    padding: 1rem;
-    background-color: var(--white);
-    height: 100%;
-}
-
 .gap-2{
     gap: 2rem;
 }
-
+.my-1 {
+    margin: 1rem 0;
+}
 .card {
     padding: 1rem;
     box-shadow: 1px 1px 10px #cdcdcd;

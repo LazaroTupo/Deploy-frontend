@@ -1,17 +1,17 @@
 import axios from "axios";
 
 export function getAntecedentes() {
-    return axios.get('http://127.0.0.1:8000/antecedentes/');
+    return axios.get('https://web-production-97cf.up.railway.app/antecedentes/');
 }
 export function getAntecedente(antecedente) {
-    return axios.get(`http://127.0.0.1:8000/antecedentes/${antecedente}`);
+    return axios.get(`https://web-production-97cf.up.railway.app/antecedentes/${antecedente}/`);
 }
 export function updateAntecedentes(antecedentes) {
-    return axios.put(`http://127.0.0.1:8000/antecedentes/${antecedentes.id}/`, antecedentes);
+    return axios.put(`https://web-production-97cf.up.railway.app/antecedentes/${antecedentes.id}/`, antecedentes);
 }
 export function postAntecedentes(antecedentes) {
-    return axios.put(`http://127.0.0.1:8000/antecedentes/`, antecedentes);
+    return axios.post(`https://web-production-97cf.up.railway.app/antecedentes/`, antecedentes);
 }
 export function deleteAntecedentes(antecedentes) {
-    return axios.put(`http://127.0.0.1:8000/antecedentes/${antecedentes.id}/`, antecedentes);
+    return axios.delete(`https://web-production-97cf.up.railway.app/antecedentes/${antecedentes.id}/`, antecedentes);
 }

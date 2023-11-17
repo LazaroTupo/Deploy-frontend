@@ -1,28 +1,23 @@
-.container{
-    height:100%;
-    box-sizing: border-box;
-}
-
 .contenedorFiltro{
     display: flex;
     justify-content: flex-end;
-    margin-right: 110px;
+    padding: 0 4rem;
 }
-
 .contenedorContenido{
     display:grid;
     grid-template-columns: 1fr 10fr 1fr;
-    height:100%;
     padding-bottom: 16px;
 }
 .contenedorTrianguloIzq{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100vh;
 }
 .contenedorTrianguloDer{
     display: flex;
     align-items: center;
+    height: 100vh;
 }
 .trianguloIzq{
     width: 0;
@@ -47,20 +42,17 @@
     border-left: 50px solid #4ab372;
 }
 .contenedorHistorial{
-    margin-right:20px;
-    margin-left:20px;
+    box-sizing: border-box;
+    margin-right:10px;
+    margin-left:10px;
     border-radius: 20px;
     border:2px solid #000000;;
-    padding-top:20px;
-    padding-right:20px;
-    padding-left:20px;
+    padding:15px;
     background-color:#d8f3ff;
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap:20px;
-    height:637px;
-
-    
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap:10px;
 }
 .columnaIzq{
     height:100%;
@@ -70,9 +62,9 @@
 }
 .contenedorCategoria{
     background-color: white;
-    height:148px;
-    margin-bottom:10px;
     border-radius: 20px;
+    height:auto;
+    padding:5px 7px  5px 7px ;
 }
 .categoriaTitulo{
     height:30px;
@@ -85,10 +77,6 @@
     font-size:25px; 
     font-weight: 600;
     margin-left: 10px;
-}
-.contenido{
-    margin-top:3px;
-    margin-left: 15px; 
 }
 .icono{
     margin-left:8px;
@@ -104,25 +92,23 @@
     height:100px;
     width:100px;
     object-fit: cover;
-    margin-left: 5px;
-    margin-top: 5px;
+    margin-right:3px;
 }
-.modalFiltros{
+.ventanaModal{
     margin:auto;
     background-color: #4495d1;
     height:300px;
     width:650px;
-    border-radius: 10px;
-    
+    border-radius: 10px;   
     border: solid 2px;
 
 }
-.modalFiltrosContenedor{
+.modalContenedor{
     display:flex;
     flex-direction: column;
     height:100%;
 }
-.modalFiltros-cerrar{
+.modal-cerrar{
     width: 30px;
     margin-left: auto;
     cursor:pointer;
@@ -149,7 +135,6 @@
 .modalFiltros-aplicar{
     width:100px;
     margin:auto;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 17px;
     background-color: #d8f3ff;
     border-radius: 10px;

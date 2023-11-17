@@ -6,6 +6,7 @@ import InputField from "../components/InputField";
 import PatientProfile from "../components/PatientProfile";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
+import ModalRegistro from "../components/ModalRegistro";
 
 import {getPacientes} from '../data/apiPacientes';
 
@@ -13,8 +14,8 @@ export default function Pacientes(){
     const [pacientes, setPacientes] = useState([]);
     const [pacienteShow, setPacienteShow] = useState({});
     const [modal, setModal] = useState(false);
-    const [modalCreate, setModalCreate] = useState(false);
-
+    const [modalRegistro, setModalRegistro] = useState(false);
+    
     useEffect(()=>{
         const loader = async () => {
             const data = (await getPacientes()).data
@@ -26,6 +27,8 @@ export default function Pacientes(){
         loader();        
     }, []);
 
+    
+
     return(
         <div className="page">
             <div className="pacientes-buscador">
@@ -33,7 +36,7 @@ export default function Pacientes(){
                     <InputField placeholder={"Ingrese un nombre"} type={"text"}/>  
                 </div>
                 <div className="flex-1">
-                    <Button type={"button"} color={"blue"} onClick={()=>setModalCreate(true)} >
+                    <Button type={"button"} color={"blue"} onClick={()=>setModalRegistro(true)} >
                         Agregar
                     </Button>
                 </div>
@@ -52,7 +55,8 @@ export default function Pacientes(){
                     {pacientes.length!=0 && <Card paciente={pacienteShow} modalSetter={setModal}/>}                    
                 </div>
             </div>      
-            {modal && <Modal paciente={pacienteShow} setterPaciente={setPacienteShow} setterClose={setModal}/>}          
+            {modal && <Modal paciente={pacienteShow} setterPaciente={setPacienteShow} setterClose={setModal}/>} 
+            {modalRegistro && <ModalRegistro setterClose={setModalRegistro} />}         
         </div>
     );
 } 

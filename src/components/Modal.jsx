@@ -25,44 +25,56 @@ export default function Modal({paciente, setterPaciente, setterClose}) {
         <div className="modal-overlay">
             <button className="btn-close"
             onClick={() => setterClose(false)}>X</button>
-            <div className="modal">
+            <form action="" className="modal" onSubmit={handleSubmit(onSubmit)}>
                 <h2>Formulario de Datos</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="w-full">
-                        <label htmlFor="dni">DNI:</label>
-                        <input type="text" className="" value={paciente!==undefined && paciente.dni} onChange={()=>{}}/>
+                <div className="flex-1 flex gap-2">
+                    <div className="flex-1 flex flex-col h-full">
+                        <table><tbody>                        
+                            <tr>
+                                <td><label htmlFor="dni">DNI:</label></td>
+                                <td><input type="text" className="w-full" value={paciente!==undefined && paciente.dni} onChange={()=>{}}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="nombre">Nombre:</label></td>
+                                <td><input type="text" className="w-full" {...register('nombre')} /></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="apellido">Apellido:</label></td>
+                                <td><input type="text" className="w-full" {...register('apellido')}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="fecha_de_nacimiento">Fecha de Nacimiento:</label></td>
+                                <td><input type="date" className="w-full" {...register('fecha_de_nacimiento')}/></td>
+                            </tr>
+                        </tbody></table>
                     </div>
-                    <div className="w-full">
-                        <label htmlFor="nombre">Nombre:</label>
-                        <input type="text" className="" {...register('nombre')} />
+                    <div className="flex-1 flex flex-col h-full">
+                        <table><tbody>                        
+                            <tr>
+                                <td><label htmlFor="direccion">Dirección:</label></td>
+                                <td><input type="text" className="w-full" {...register('direccion')}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="telefono">Teléfono:</label></td>
+                                <td><input type="number" className="w-full" {...register('telefono')}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="genero">Género:</label></td>
+                                <td><input type="text" className="w-full" {...register('genero')}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="ocupacion">Ocupación:</label></td>
+                                <td><input type="text" className="w-full" {...register('ocupacion')}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="estado_civil">Estado Civil:</label></td>
+                                <td><input type="text" className="w-full"  {...register('estado_civil')}/></td>
+                            </tr>
+                        </tbody></table>
                     </div>
-                    <div className="w-full">
-                        <label htmlFor="apellido">Apellido:</label>
-                        <input type="text" className="" {...register('apellido')}/>
-                    </div>
-                    <div className="w-full">
-                        <label htmlFor="fecha_de_nacimiento">Fecha de Nacimiento:</label>
-                        <input type="date" className="" {...register('fecha_de_nacimiento')}/>
-                    </div>
-                    <div className="w-full">
-                        <label htmlFor="direccion">Dirección:</label>
-                        <input type="text" className="" {...register('direccion')}/>
-                    </div>
-                    <div className="w-full">
-                        <label htmlFor="telefono">Teléfono:</label>
-                        <input type="number" className="" {...register('telefono')}/>
-                    </div>
-                    <div className="w-full">
-                        <label htmlFor="genero">Género:</label>
-                        <input type="text" className="" {...register('genero')}/>
-                    </div>
-                    <div className="w-full">
-                        <label htmlFor="ocupacion">Ocupación:</label>
-                        <input type="text" className="" {...register('ocupacion')}/>
-                    </div>
-                    <button type="submit">Guardar</button>
-                </form>
-            </div>
+                </div>
+                <button className="btn btn-green" type="submit">Guardar</button>
+            </form>
         </div>
     )
 }
