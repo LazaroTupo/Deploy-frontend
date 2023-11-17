@@ -109,7 +109,8 @@ export default function FichaForm({paciente}) {
 
         } 
         x();
-        navigate('/sgp/patiexdnts')
+        //navigate('/sgp/patiexdnts')
+        console.log("XD")
     }
     return (
         <div className="page">
