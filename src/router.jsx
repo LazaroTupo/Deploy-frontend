@@ -21,10 +21,10 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Index/>
             },
-            {
+            /*{
                 path: '/sgp/profile',
                 element: <Perfil/>,
-            },
+            },*/
             {
                 path: '/sgp/calendar',
                 element: <Calendario/>,
